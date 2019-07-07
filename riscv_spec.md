@@ -137,7 +137,7 @@
 | csrrc rd, csr, rs1       | source    | CSRRC  | SYSTEM | tmp=rs1; rd=csr; csr &= !tmp |
 | csrrwi rd, csr, rs1      | uimm[4:0] | CSRRWI | SYSTEM | rd=csr; csr=uimm[4:0]        |
 | csrrsi rd, csr, rs1      | uimm[4:0] | CSRRSI | SYSTEM | rd=csr; csr\|=uimm[4:0]      |
-| csrrci rd, csr, rs1      | uimm[4:0] | CSRRCI | SYSTEM | rd=csr; csr\|=uimm[4:0]      |
+| csrrci rd, csr, rs1      | uimm[4:0] | CSRRCI | SYSTEM | rd=csr; csr \&= !uimm[4:0]   |
 
 - 计时器和计数器(伪指令)
   
