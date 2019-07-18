@@ -223,6 +223,29 @@
 
 PMAs是基础硬件的固有属性，在系统运行时基本不会改变。一些内存区域的PMAs在芯片设计时就已经确定，例如片上ROM。另一些是在电路板设计的时候确定的。芯片外总线也可能支持冷插拔或热插拔的设备。一些设备可能支持在运行的时候配置，这意味着不同的PMAs。
 
+1. 内存 VS I/O VS 空的区域
+
+2. 支持的访问类型
+
+3. PMAs的原子指令
+
+   对原子指令的支持可以分为两种类型：LR/SC和AMOs。对于AMOs来说，有四种程度的支持：AMONone, AMOSwap, AMOLogical, AMOArithmetic。
+
+   | AMO类型       | 支持的操作                                            |
+   | ------------- | ----------------------------------------------------- |
+   | AMONone       | 无                                                    |
+   | AMOSwap       | amoswap                                               |
+   | AMOLogical    | AMOSwap + amoand, amoor, amoxor                       |
+   | AMOArithmetic | AMOLogical + amoadd, amomin, amomax, amominu, amomaxu |
+
+   
+
+4. 内存次序
+
+5. 一致性与可缓存性
+
+6. 幂等性
+
 ##### 3.6 物理内存保护 (**PMP**)
 
 为了支持安全运行和抑制错误，最好限制运行在某个核上的程序对物理地址的访问。物理内存保护(PMP)单元提供了单个hart上机器模式下的控制寄存器，以设置在指定物理内存区域上的访问权限(read, write, execute)。PMP检查和PMA检查是并行的。
