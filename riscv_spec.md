@@ -50,36 +50,36 @@
 
 #####   4. 整数计算指令(共计22条指令)
 
-      | imm+rs1+funct3+rd+opcode                 | funct3 | opcode | 意义                                       |
-      | ---------------------------------------- | ------ | ------ | ---------------------------------------- |
-      | ADDI rd, rs1, imm                        | ADDI   | OP-IMM | rd = rs1 + imm                           |
-      | SLTI rd, rs1, imm (set less than immediate) | SLTI   | OP-IMM | rd = (rs1<imm) ? 1 : 0(用于有符号数)           |
-      | SLTIU rd, rs1, imm                       | SLTIU  | OP-IMM | rd = (rs1<imm) ? 1 : 0(用于无符号数);**注sltiu rd,rs,1的意思是rd = (rs==0)?1:0;** |
-      | ANDI rd, rs1, imm                        | ANDI   | OP-IMM | rd = rs1 & imm                           |
-      | ORI rd, rs1, imm                         | ORI    | OP-IMM | rd = rs1 \| imm                          |
-      | XORI rd, rs1, imm                        | XORI   | OP-IMM | rd = rs1 ^ imm                           |
-      | SLLI rd, rs1, imm                        | SLLI   | OP-IMM | rd = rs1 << imm[4:0]                     |
-      | SRLI rd, rs1, imm                        | SRLI   | OP-IMM | rd = (unsigned) rs1 >> imm[4:0]          |
-      | SRAI rd, rs1, imm                        | SRAI   | OP-IMM | rd = (signed) rs1 >> imm[4:0]            |
-    
-      | imm+rd+opcode                            | opcode | 意义                    |
-      | ---------------------------------------- | ------ | --------------------- |
-      | LUI rd, imm (load upper immediate)       | LUI    | rd = (imm << 12)      |
-      | AUIPC rd, imm (add upper immediate to pc) | AUIPC  | rd = (imm << 12) + PC |
-    
-      | funct7+rs2+rs1+funct3+rd+opcode | funct7  | funct3 | opcode | 意义                                       |
-      | ------------------------------- | ------- | ------ | ------ | ---------------------------------------- |
-      | ADD rd, rs1, rs2                | 0000000 | ADD    | OP     | rd = rs1 + rs2                           |
-      | SLT rd, rs1, rs2                | 0000000 | STL    | OP     | rd = (rs1<rs2) ? 1 : 0 (用于有符号数)          |
-      | SLTU rd, rs1, rs2               | 0000000 | STLU   | OP     | rd = (rs1<rs2) ? 1 : 0 (用于无符号数);**注sltu rd, x0, rs的意思是rd = (rs != 0) ? 1 : 0;** |
-      | AND rd, rs1, rs2                | 0000000 | AND    | OP     | rd = rs1 & rs2                           |
-      | OR rd, rs1, rs2                 | 0000000 | OR     | OP     | rd = rs1 \| rs2                          |
-      | XOR rd, rs1, rs2                | 0000000 | XOR    | OP     | rd = rs1 ^ rs2                           |
-      | SLL rd, rs1, rs2                | 0000000 | SLL    | OP     | rd = rs1 << (rs2 & 0x1F )                |
-      | SRL rd, rs1, rs2                | 0000000 | SRL    | OP     | rd = (unsigned) rs1 >> (rs2 & 0x1F)      |
-      | SUB rd, rs1, rs2                | 0100000 | SUB    | OP     | rd = rs1 - rs2                           |
-      | SRA rd, rs1, rs2                | 0100000 | SRA    | OP     | rd = (signed) rs1 >> (rs2 & 0x1F)        |
-    
+| imm+rs1+funct3+rd+opcode                 | funct3 | opcode | 意义                                       |
+| ---------------------------------------- | ------ | ------ | ---------------------------------------- |
+| ADDI rd, rs1, imm                        | ADDI   | OP-IMM | rd = rs1 + imm                           |
+| SLTI rd, rs1, imm (set less than immediate) | SLTI   | OP-IMM | rd = (rs1<imm) ? 1 : 0(用于有符号数)           |
+| SLTIU rd, rs1, imm                       | SLTIU  | OP-IMM | rd = (rs1<imm) ? 1 : 0(用于无符号数);**注sltiu rd,rs,1的意思是rd = (rs==0)?1:0;** |
+| ANDI rd, rs1, imm                        | ANDI   | OP-IMM | rd = rs1 & imm                           |
+| ORI rd, rs1, imm                         | ORI    | OP-IMM | rd = rs1 \| imm                          |
+| XORI rd, rs1, imm                        | XORI   | OP-IMM | rd = rs1 ^ imm                           |
+| SLLI rd, rs1, imm                        | SLLI   | OP-IMM | rd = rs1 << imm[4:0]                     |
+| SRLI rd, rs1, imm                        | SRLI   | OP-IMM | rd = (unsigned) rs1 >> imm[4:0]          |
+| SRAI rd, rs1, imm                        | SRAI   | OP-IMM | rd = (signed) rs1 >> imm[4:0]            |
+
+| imm+rd+opcode                            | opcode | 意义                    |
+| ---------------------------------------- | ------ | --------------------- |
+| LUI rd, imm (load upper immediate)       | LUI    | rd = (imm << 12)      |
+| AUIPC rd, imm (add upper immediate to pc) | AUIPC  | rd = (imm << 12) + PC |
+
+| funct7+rs2+rs1+funct3+rd+opcode | funct7  | funct3 | opcode | 意义                                       |
+| ------------------------------- | ------- | ------ | ------ | ---------------------------------------- |
+| ADD rd, rs1, rs2                | 0000000 | ADD    | OP     | rd = rs1 + rs2                           |
+| SLT rd, rs1, rs2                | 0000000 | STL    | OP     | rd = (rs1<rs2) ? 1 : 0 (用于有符号数)          |
+| SLTU rd, rs1, rs2               | 0000000 | STLU   | OP     | rd = (rs1<rs2) ? 1 : 0 (用于无符号数);**注sltu rd, x0, rs的意思是rd = (rs != 0) ? 1 : 0;** |
+| AND rd, rs1, rs2                | 0000000 | AND    | OP     | rd = rs1 & rs2                           |
+| OR rd, rs1, rs2                 | 0000000 | OR     | OP     | rd = rs1 \| rs2                          |
+| XOR rd, rs1, rs2                | 0000000 | XOR    | OP     | rd = rs1 ^ rs2                           |
+| SLL rd, rs1, rs2                | 0000000 | SLL    | OP     | rd = rs1 << (rs2 & 0x1F )                |
+| SRL rd, rs1, rs2                | 0000000 | SRL    | OP     | rd = (unsigned) rs1 >> (rs2 & 0x1F)      |
+| SUB rd, rs1, rs2                | 0100000 | SUB    | OP     | rd = rs1 - rs2                           |
+| SRA rd, rs1, rs2                | 0100000 | SRA    | OP     | rd = (signed) rs1 >> (rs2 & 0x1F)        |
+
       NOP指令的编码：ADDI x0, x0, 0
 
 #####   5. 控制转移指令(8条指令)
@@ -99,22 +99,19 @@
 | BGE/BGEU rs1, rs2, offset     | BGE/BGEU | BRANCH | if(rs1>=rs2) |
 
 #####   6. LOAD和STORE指令(8条指令)
+| imm+rs1+funct3+rd+opcode | funct3 | opcode | 意义            |
+| ------------------------ | ------ | ------ | --------------- |
+| LW rd, imm(rs1)          | 宽度   | LOAD   | rd=mem(rs1+imm) |
+| LH rd, imm(rs1)          | 宽度   | LOAD   | rd=mem(rs1+imm) |
+| LHU rd, imm(rs1)         | 宽度   | LOAD   | rd=mem(rs1+imm) |
+| LB rd, imm(rs1)          | 宽度   | LOAD   | rd=mem(rs1+imm) |
+| LBU rd, imm(rs1)         | 宽度   | LOAD   | rd=mem(rs1+imm) |
 
-      | imm+rs1+funct3+rd+opcode | funct3 | opcode | 意义            |
-      | ------------------------ | ------ | ------ | --------------- |
-      | LW rd, imm(rs1)          | 宽度   | LOAD   | rd=mem(rs1+imm) |
-      | LH rd, imm(rs1)          | 宽度   | LOAD   | rd=mem(rs1+imm) |
-      | LHU rd, imm(rs1)         | 宽度   | LOAD   | rd=mem(rs1+imm) |
-      | LB rd, imm(rs1)          | 宽度   | LOAD   | rd=mem(rs1+imm) |
-      | LBU rd, imm(rs1)         | 宽度   | LOAD   | rd=mem(rs1+imm) |
-    
-      | imm+rs2+rs1+funct3+imm+opcode | funct3 | opcode | 意义               |
-      | ----------------------------- | ------ | ------ | ---------------- |
-      | SW(32位)                       | 宽度     | STORE  | mem(rs1+imm)=rs2 |
-      | SH(16位)                       | 宽度     | STORE  | mem(rs1+imm)=rs2 |
-      | SB(8位)                        | 宽度     | STORE  | mem(rs1+imm)=rs2 |
-    
-      ​
+| imm+rs2+rs1+funct3+imm+opcode | funct3 | opcode | 意义             |
+| ----------------------------- | ------ | ------ | ---------------- |
+| SW rs2, imm(rs1)              | 宽度   | STORE  | mem(rs1+imm)=rs2 |
+| SH rs2, imm(rs1)              | 宽度   | STORE  | mem(rs1+imm)=rs2 |
+| SB rs2, imm(rs1)              | 宽度   | STORE  | mem(rs1+imm)=rs2 |
 
 #####   7. 内存模型(2条指令)
 
@@ -125,7 +122,7 @@
 | imm[11:0]保留，应置为0                  | 保留，应置为0 | FENCE.I | 保留，应置为0 | MISC-MEM | 同步指令和数据流  |
 
 
-​      
+      
 
 #####   8. 控制和状态寄存器指令(6条指令)
 - CSR指令
