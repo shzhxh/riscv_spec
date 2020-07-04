@@ -146,11 +146,13 @@
 
 ##### 9. 环境调用和断点(2条指令)
 
-      | funct12 | rs1  | funct3 | rd   | opcode | 意义           |
-      | ------- | ---- | ------ | ---- | ------ | ------------ |
-      | ECALL   | 0    | PRIV   | 0    | SYSTEM | 用于产生对执行环境的请求 |
-      | EBREAK  | 0    | PRIV   | 0    | SYSTEM | 调试器用它返回调试环境  |
-    
+| funct12 | rs1  | funct3 | rd   | opcode | 意义           |
+| ------- | ---- | ------ | ---- | ------ | ------------ |
+| ECALL   | 0    | PRIV   | 0    | SYSTEM | 用于产生对执行环境的请求 |
+| EBREAK  | 0    | PRIV   | 0    | SYSTEM | 调试器用它返回调试环境  |
+
+
+
       ECALL指令只是触发一个当前特权级下的exception，并不执行其它操作。
     
       注：ECALL可以在各自的特权级下产生不同的exception,所以可以选择性地委派call exception。对于Unix-like操作系统来说，一个典型的用法是通过U-mode下的调用切换到S-mode。
