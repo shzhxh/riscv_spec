@@ -24,29 +24,29 @@
 
 #####   1. 程序员模型
 
-      用户可见的寄存器有3种：1个恒为0的x0，31个通用寄存器x1-x31，pc。
+  用户可见的寄存器有3种：1个恒为0的x0，31个通用寄存器x1-x31，pc。
 
 #####   2. 基本指令格式
 
-      在基本ISA里，所有指令都是32位且必须4字节对齐。共有四种基本格式：R-type是寄存器-寄存器操作，I-type是寄存器-立即数操作，S-type，U-type。
+  在基本ISA里，所有指令都是32位且必须4字节对齐。共有四种基本格式：R-type是寄存器-寄存器操作，I-type是寄存器-立即数操作，S-type，U-type。
     
-      立即数字段里放的是立即数的位置，而不是它本身。
+  立即数字段里放的是立即数的位置，而不是它本身。
     
-      R-type: **funct7**[31:25] **rs2**[24:20] **rs1**[19:15] **funct3**[14:12] **rd**[11:7] **opcode**[6:0]
+  R-type: **funct7**[31:25] **rs2**[24:20] **rs1**[19:15] **funct3**[14:12] **rd**[11:7] **opcode**[6:0]
     
-      I-type: **imm[11:0]**[31:20] **rs1**[19:15] **funct3**[14:12] **rd**[11:7] **opcode**[6:0]
+  I-type: **imm[11:0]**[31:20] **rs1**[19:15] **funct3**[14:12] **rd**[11:7] **opcode**[6:0]
     
-      S-type: **imm[11:5]**[31:25] **rs2**[24:20] **rs1**[19:15] **funct3**[14:12] **imm[4:0]**[11:7] **opcode**[6:0]
+  S-type: **imm[11:5]**[31:25] **rs2**[24:20] **rs1**[19:15] **funct3**[14:12] **imm[4:0]**[11:7] **opcode**[6:0]
     
-      U-type: **imm[31:12]**[31:12] **rd**[11:7] **opcode**[6:0]
+  U-type: **imm[31:12]**[31:12] **rd**[11:7] **opcode**[6:0]
 
 #####   3. 立即数编码的变体
 
       B是S的变体，J是U的变体
+
+  B-type: **imm[12]imm[10:5]**[31:25] **rs2**[24:20] **rs1**[19:15] **funct3**[14:12] **imm[4:1]imm[11]**[11:7] **opcode**[6:0]
     
-      B-type: **imm[12]imm[10:5]**[31:25] **rs2**[24:20] **rs1**[19:15] **funct3**[14:12] **imm[4:1]imm[11]**[11:7] **opcode**[6:0]
-    
-      J-type:**imm[20]imm[10:1]imm[11]imm[19:12]**[31:12] **rd**[11:7] **opcode**[6:0]
+  J-type:**imm[20]imm[10:1]imm[11]imm[19:12]**[31:12] **rd**[11:7] **opcode**[6:0]
 
 #####   4. 整数计算指令(共计22条指令)
 
@@ -122,7 +122,7 @@
 | imm[11:0]保留，应置为0                  | 保留，应置为0 | FENCE.I | 保留，应置为0 | MISC-MEM | 同步指令和数据流  |
 
 
-      
+​      
 
 #####   8. 控制和状态寄存器指令(6条指令)
 - CSR指令
@@ -184,7 +184,7 @@
       | 0000000 | src2 | src1 | SLLW/SRLW | dest | OP-32  |
       | 0100000 | src2 | src1 | SUBW/SRAW | dest | OP-32  |
 
-      ​
+      
 
    3. Load和Store指令(增加了3条指令)
 
@@ -203,7 +203,7 @@
    | MUL/MULH\[[S]U] rd, rs1, rs2    | MULDIV | MUL/MULH\[[S]U] | OP     | MUL将乘法的低位放入目标寄存器，MULH则是放高位          |
    | MULW rd, rs1, rs2               | MULDIV | MULW            | OP-32  | 仅用于RV64，计算源寄存器的低32位，再用MUL指令获取高32位的值 |
 
-   ​
+   
 
 2. 除法操作
 
@@ -212,7 +212,7 @@
    | DIV[U]/REM[U] rd, rs1, rs2      | MULDIV | DIV[U]/REM[U]   | OP     | rs1/rs2。DIV提供商，REM提供余数 |
    | DIV[U]W/REM[U]W rd, rs1, rs2    | MULDIV | DIV[U]W/REM[U]W | OP-32  | 仅用于RV64,源寄存器的低32位相除。   |
 
-   ​
+   
 
 #### 7. A：原子扩展
 
@@ -372,7 +372,7 @@
   | tail offset                  | auipc x6, offset[31:12]; jalr x0, x6, offset[11:0] | pc += offset               |
   | fence                        | fence iorw, iorw                         | 隔离内存和IO                    |
 
-  ​
+  
 
 - 访问CSR的伪指令
 
@@ -389,7 +389,7 @@
   | csrsi csr, imm  | csrrsi x0, csr, imm      | csr \|= imm, 立即数置位csr     |
   | csrci csr, imm  | csrrci x0, csr, imm      | csr &= !imm, 立即数清位csr     |
 
-  ​
+  
 
 #### 21. 扩展RISC-V
 
